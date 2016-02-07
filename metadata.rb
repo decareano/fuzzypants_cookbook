@@ -1,3 +1,10 @@
-name "git"
-version "0.1.0"
+name 'git'
+maintainer 'marcelo gobelli'
+maintainer 'marcelo.gobelli@someisp.net'
+description 'Install/Configures git'
+version '0.1.0'
 
+depends 'apt'
+depends 'application'
+depends 'build-essential'
+depends 'apache2'

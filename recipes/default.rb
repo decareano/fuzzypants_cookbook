@@ -5,6 +5,10 @@ include_recipe "build-essential"
 package "git"
 log "well, thats too easy"
 
+apt_package 'apache2' do
+  action :install
+end
+
 directory "/media/myrepo" do
   owner 'root'
   group 'root'
@@ -29,6 +33,8 @@ template '/tmp/somefile' do
   source 'somefile.erb'
   only_if {File.exist?('/etc/passwd')} 
 end
+
+
 
 
 template '/tmp/baz' do

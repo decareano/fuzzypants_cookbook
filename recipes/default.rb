@@ -24,6 +24,13 @@ template '/etc/debconf.conf' do
   #verify 'debconf -t -c %{path}'
 end
 
+template '/tmp/somefile' do
+  mode '0755'
+  source 'somefile.erb'
+  only_if {File.exist?('/etc/passwd')} 
+end
+
+
 template '/tmp/baz' do
   verify { 1 == 1 }
 end

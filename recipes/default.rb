@@ -9,11 +9,17 @@ apt_package 'apache2' do
   action :install
 end
 
+package 'nginx' do
+  action :install
+end
+
+
 directory "/media/myrepo" do
   owner 'root'
   group 'root'
   mode '755'
 end
+
 
 cookbook_file '/etc/index.php' do
   source 'index.php'
@@ -56,4 +62,36 @@ template '/file/name.txt' do
     'partial_name_3.txt.erb' => 'message'
   }
 end
+
+node.default['nginx']['remote_ip_var'] = 'remote_addr'
+node.default['nginx']['authorized_ips'] = ['127.0.0.1/32']
+
+service 'nginx' do
+  supports :status => true, :restart => true, :reload => true
+end
+
+template 'authorized_ip' do
+  path "#{node['nginx']['dir']}/authorized_ip"
+  source 'authorized_ip.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+  variables(
+    :remote_ip_var => node['nginx']['remote_ip_var'],
+    :authorized_ips => node['nginx']['authorized_ips']
+  )
+
+  notifies :reload, 'service[nginx]', :immediately
+end
+
+#template '/etc/sudoers' do
+  #source 'sudoers.erb'
+  #mode '0440'
+  #owner 'root'
+  #group 'root'
+  #variables({
+     #:sudoers_groups => node[:authorization][:sudo][:groups],
+     #:sudoers_users => node[:authorization][:sudo][:users]
+  #})
+#end
 

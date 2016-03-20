@@ -13,6 +13,11 @@ package 'nginx' do
   action :install
 end
 
+#cookbook_file "/etc/nginx/sites-enabled" do
+   #source "nginx.config"
+   #action :create
+#end
+
 
 directory "/media/myrepo" do
   owner 'root'

@@ -1,0 +1,183 @@
+-----> Starting Kitchen (v1.5.0)
+-----> Converging <default-ubuntu-1404>...
+       Preparing files for transfer
+       Preparing dna.json
+       Resolving cookbook dependencies with Berkshelf 4.0.1...
+       Removing non-cookbook files before transfer
+       Preparing validation.pem
+       Preparing client.rb
+-----> Chef Omnibus installation detected (install only if missing)
+       Transferring files to <default-ubuntu-1404>
+       [2016-03-30T14:29:20+00:00] WARN: Ohai::Config[:disabled_plugins] is set. Ohai::Config[:disabled_plugins] is deprecated and will be removed in future releases of ohai. Use ohai.disabled_plugins in your configuration file to configure :disabled_plugins for ohai.
+       Starting Chef Client, version 12.8.1
+       resolving cookbooks for run list: ["git::default", "apache2::default"]
+       Synchronizing Cookbooks:
+         - git (0.1.0)
+         - build-essential (2.2.4)
+         - bluepill (2.4.1)
+         - apache2 (3.1.0)
+         - runit (1.7.6)
+         - packagecloud (0.1.1)
+         - application (5.1.0)
+         - yum (3.10.0)
+         - nginx (2.7.6)
+         - apt (2.9.2)
+         - poise (2.6.0)
+         - poise-service (1.1.1)
+         - ohai (2.1.0)
+         - yum-epel (0.6.5)
+         - rsyslog (2.2.0)
+       Installing Cookbook Gems:
+       Compiling Cookbooks...
+       Converging 122 resources
+       Recipe: apt::default
+         * file[/var/lib/apt/periodic/update-success-stamp] action nothing (skipped due to action :nothing)
+         * directory[/etc/apt/apt.conf.d] action create (up to date)
+         * cookbook_file[/etc/apt/apt.conf.d/15update-stamp] action create (up to date)
+         * execute[apt-get update] action nothing (skipped due to action :nothing)
+         * execute[apt-get autoremove] action nothing (skipped due to action :nothing)
+         * execute[apt-get autoclean] action nothing (skipped due to action :nothing)
+         * execute[apt-get-update-periodic] action run (skipped due to not_if)
+         * directory[/var/cache/local] action create (up to date)
+         * directory[/var/cache/local/preseeding] action create (up to date)
+         * template[/etc/apt/apt.conf.d/10recommends] action create (up to date)
+         * apt_package[apt-transport-https] action install (up to date)
+       Recipe: build-essential::_debian
+         * apt_package[autoconf] action install (up to date)
+         * apt_package[binutils-doc] action install (up to date)
+         * apt_package[bison] action install (up to date)
+         * apt_package[build-essential] action install (up to date)
+         * apt_package[flex] action install (up to date)
+         * apt_package[gettext] action install (up to date)
+         * apt_package[ncurses-dev] action install (up to date)
+       Recipe: git::default
+         * apt_package[git] action install (up to date)
+         * log[well, thats too easy] action write
+         
+         * apt_package[apache2] action install (up to date)
+         * apt_package[nginx] action install (up to date)
+         * group[mygroup] action create (up to date)
+         * user[marcelo] action create (up to date)
+         * directory[/media/myrepo] action create (up to date)
+         * cookbook_file[/etc/index.php] action create (up to date)
+         * template[/etc/debconf.conf] action create (up to date)
+         * template[/tmp/somefile] action create (up to date)
+         * template[/tmp/baz] action create (up to date)
+         * directory[/file] action create (up to date)
+         * template[/file/name.txt] action create (up to date)
+         * service[nginx] action nothing (skipped due to action :nothing)
+         * template[authorized_ip] action create (up to date)
+       Recipe: apache2::default
+         * apt_package[apache2] action install (up to date)
+         * directory[/etc/apache2/sites-available] action create (up to date)
+         * directory[/etc/apache2/sites-enabled] action create (up to date)
+         * directory[/etc/apache2/mods-available] action create (up to date)
+         * directory[/etc/apache2/mods-enabled] action create (up to date)
+         * directory[/etc/apache2/conf-available] action create (up to date)
+         * directory[/etc/apache2/conf-enabled] action create (up to date)
+         * link[/etc/apache2/sites-enabled/default] action delete (up to date)
+         * file[/etc/apache2/sites-available/default] action delete (up to date)
+         * link[/etc/apache2/sites-enabled/default.conf] action delete (up to date)
+         * file[/etc/apache2/sites-available/default.conf] action delete (up to date)
+         * link[/etc/apache2/sites-enabled/000-default] action delete (up to date)
+         * file[/etc/apache2/sites-available/000-default] action delete (up to date)
+         * link[/etc/apache2/sites-enabled/000-default.conf] action delete (up to date)
+         * file[/etc/apache2/sites-available/000-default.conf] action delete (up to date)
+         * directory[/etc/apache2/conf.d] action delete (up to date)
+         * directory[/var/log/apache2] action create (up to date)
+         * apt_package[perl] action install (up to date)
+         * link[/usr/sbin/a2ensite] action delete (skipped due to only_if)
+         * template[/usr/sbin/a2ensite] action create (up to date)
+         * link[/usr/sbin/a2dissite] action delete (skipped due to only_if)
+         * template[/usr/sbin/a2dissite] action create (up to date)
+         * link[/usr/sbin/a2enmod] action delete (skipped due to only_if)
+         * template[/usr/sbin/a2enmod] action create (up to date)
+         * link[/usr/sbin/a2dismod] action delete (skipped due to only_if)
+         * template[/usr/sbin/a2dismod] action create (up to date)
+         * link[/usr/sbin/a2enconf] action delete (skipped due to only_if)
+         * template[/usr/sbin/a2enconf] action create (up to date)
+         * link[/usr/sbin/a2disconf] action delete (skipped due to only_if)
+         * template[/usr/sbin/a2disconf] action create (up to date)
+         * directory[/etc/apache2/ssl] action create (up to date)
+         * directory[/var/cache/apache2] action create (up to date)
+         * directory[/var/lock/apache2] action create (up to date)
+         * template[/etc/sysconfig/apache2] action create (skipped due to only_if)
+         * template[/etc/apache2/envvars] action create (up to date)
+         * template[apache2.conf] action create (up to date)
+         * file[/etc/apache2/conf-available/security] action delete (up to date)
+         * template[/etc/apache2/conf-available/security.conf] action create (up to date)
+         * execute[a2enconf security.conf] action run (skipped due to not_if)
+         * file[/etc/apache2/conf-available/charset] action delete (up to date)
+         * template[/etc/apache2/conf-available/charset.conf] action create (up to date)
+         * execute[a2enconf charset.conf] action run (skipped due to not_if)
+         * file[/etc/apache2/ports] action delete (up to date)
+         * template[/etc/apache2/ports.conf] action create (up to date)
+       Recipe: apache2::mpm_event
+         * file[/etc/apache2/mods-available/mpm_prefork.load] action create (up to date)
+         * execute[a2dismod mpm_prefork] action run (skipped due to only_if)
+         * file[/etc/apache2/mods-available/mpm_worker.load] action create (up to date)
+         * execute[a2dismod mpm_worker] action run (skipped due to only_if)
+         * template[/etc/apache2/mods-available/mpm_event.conf] action create (up to date)
+         * file[/etc/apache2/mods-available/mpm_event.load] action create (up to date)
+         * execute[a2enmod mpm_event] action run (skipped due to not_if)
+       Recipe: apache2::mod_status
+         * template[/etc/apache2/mods-available/status.conf] action create (up to date)
+         * file[/etc/apache2/mods-available/status.load] action create (up to date)
+         * execute[a2enmod status] action run (skipped due to not_if)
+       Recipe: apache2::mod_alias
+         * template[/etc/apache2/mods-available/alias.conf] action create (up to date)
+         * file[/etc/apache2/mods-available/alias.load] action create (up to date)
+         * execute[a2enmod alias] action run (skipped due to not_if)
+       Recipe: apache2::mod_auth_basic
+         * file[/etc/apache2/mods-available/auth_basic.load] action create (up to date)
+         * execute[a2enmod auth_basic] action run (skipped due to not_if)
+       Recipe: apache2::mod_authn_core
+         * file[/etc/apache2/mods-available/authn_core.load] action create (up to date)
+         * execute[a2enmod authn_core] action run (skipped due to not_if)
+       Recipe: apache2::mod_authn_file
+         * file[/etc/apache2/mods-available/authn_file.load] action create (up to date)
+         * execute[a2enmod authn_file] action run (skipped due to not_if)
+       Recipe: apache2::mod_authz_core
+         * file[/etc/apache2/mods-available/authz_core.load] action create (up to date)
+         * execute[a2enmod authz_core] action run (skipped due to not_if)
+       Recipe: apache2::mod_authz_groupfile
+         * file[/etc/apache2/mods-available/authz_groupfile.load] action create (up to date)
+         * execute[a2enmod authz_groupfile] action run (skipped due to not_if)
+       Recipe: apache2::mod_authz_host
+         * file[/etc/apache2/mods-available/authz_host.load] action create (up to date)
+         * execute[a2enmod authz_host] action run (skipped due to not_if)
+       Recipe: apache2::mod_authz_user
+         * file[/etc/apache2/mods-available/authz_user.load] action create (up to date)
+         * execute[a2enmod authz_user] action run (skipped due to not_if)
+       Recipe: apache2::mod_autoindex
+         * template[/etc/apache2/mods-available/autoindex.conf] action create (up to date)
+         * file[/etc/apache2/mods-available/autoindex.load] action create (up to date)
+         * execute[a2enmod autoindex] action run (skipped due to not_if)
+       Recipe: apache2::mod_dir
+         * template[/etc/apache2/mods-available/dir.conf] action create (up to date)
+         * file[/etc/apache2/mods-available/dir.load] action create (up to date)
+         * execute[a2enmod dir] action run (skipped due to not_if)
+       Recipe: apache2::mod_env
+         * file[/etc/apache2/mods-available/env.load] action create (up to date)
+         * execute[a2enmod env] action run (skipped due to not_if)
+       Recipe: apache2::mod_mime
+         * template[/etc/apache2/mods-available/mime.conf] action create (up to date)
+         * file[/etc/apache2/mods-available/mime.load] action create (up to date)
+         * execute[a2enmod mime] action run (skipped due to not_if)
+       Recipe: apache2::mod_negotiation
+         * template[/etc/apache2/mods-available/negotiation.conf] action create (up to date)
+         * file[/etc/apache2/mods-available/negotiation.load] action create (up to date)
+         * execute[a2enmod negotiation] action run (skipped due to not_if)
+       Recipe: apache2::mod_setenvif
+         * template[/etc/apache2/mods-available/setenvif.conf] action create (up to date)
+         * file[/etc/apache2/mods-available/setenvif.load] action create (up to date)
+         * execute[a2enmod setenvif] action run (skipped due to not_if)
+       Recipe: apache2::default
+         * service[apache2] action enable (up to date)
+         * service[apache2] action start (up to date)
+       
+       Running handlers:
+       Running handlers complete
+       Chef Client finished, 1/123 resources updated in 07 seconds
+       Finished converging <default-ubuntu-1404> (0m14.36s).
+-----> Kitchen is finished. (0m15.15s)

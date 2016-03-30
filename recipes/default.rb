@@ -18,6 +18,16 @@ end
    #action :create
 #end
 
+user_home = "/home/#{node['cookbook_name']['user']}"
+group 'mygroup'
+user node['cookbook_name']['user'] do
+  gid node['cookbook_name']['group']
+  shell '/bin/bash'
+  home user_home
+  system true
+  action :create
+end
+
 
 directory "/media/myrepo" do
   owner 'root'
